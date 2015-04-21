@@ -1,0 +1,26 @@
+{% extends "base/gallery_base.html" %}
+
+{% block title %}Galería de fotos - {{ event.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ event.name }} <span>A jQuery image gallery with a thumbnail carousel</span></h1>
+				<div id="rg-gallery" class="rg-gallery">
+					<div class="rg-thumbs">
+						<!-- Elastislide Carousel Thumbnail Viewer -->
+						<div class="es-carousel-wrapper">
+							<div class="es-nav">
+								<span class="es-nav-prev">Previous</span>
+								<span class="es-nav-next">Next</span>
+							</div>
+							<div class="es-carousel">
+								<ul>
+                                    {% for photo in disponible_photos %}
+                                        <li><a href="#"><img src="{{ photo.image.url }}" data-large="{{ photo.image.url }}" alt="{{ photo.name }}" data-description="{{ photo.name }}" /></a></li>
+                                    {% endfor %}
+								</ul>
+							</div>
+						</div>
+						<!-- End Elastislide Carousel Thumbnail Viewer -->
+					</div><!-- rg-thumbs -->
+				</div><!-- rg-gallery -->
+{% endblock %}
