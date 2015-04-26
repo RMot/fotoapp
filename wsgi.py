@@ -7,7 +7,8 @@ PROJECT_NAME = "fotoapp.fotoapp"
 os.environ['DJANGO_SETTINGS_MODULE'] = PROJECT_NAME + '.settings'
 #sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', PROJECT_NAME))
 
-virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
+virtenv = os.environ['WORKON_HOME'] + '/development/'
+
 os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.7/site-packages')
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
 try:
