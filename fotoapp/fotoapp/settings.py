@@ -17,6 +17,9 @@ ON_OPENSHIFT = False
 if 'OPENSHIFT_REPO_DIR' in os.environ:
     ON_OPENSHIFT = True
 
+ON_GOOGLE_CLOUD = False
+if 'ON_GOOGLE_CLOUD' in os.environ:
+    ON_GOOGLE_CLOUD = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -52,6 +55,21 @@ WSGI_APPLICATION = 'fotoapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+if ON_GOOGLE_CLOUD:
+    DEBUG = False
+    TEMPLATE_DEBUG = False
+    ALLOWED_HOSTS = ['*']
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'fotoapp',
+            'USER': os.getenv('OPENSHIFT_POSTGRESQL_DB_USERNAME'),
+            'PASSWORD': os.getenv('OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
+            'HOST': os.getenv('OPENSHIFT_POSTGRESQL_DB_HOST'),
+            'PORT': os.getenv('OPENSHIFT_POSTGRESQL_DB_PORT'),
+        }
+    }
+
 if ON_OPENSHIFT:
     DEBUG = True
     TEMPLATE_DEBUG = True
@@ -77,7 +95,7 @@ else:
             'USER': 'postgres',
             'PASSWORD': 'postgres',
             'HOST': 'localhost',
-            'PORT': '5432',  # this will be the case for MySQL
+            'PORT': '5432',  # this will be the default case for PostgreSQL
         }
     }
 
