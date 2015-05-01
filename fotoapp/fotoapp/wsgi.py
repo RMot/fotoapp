@@ -24,8 +24,8 @@ PROJECT_NAME = "fotoapp.fotoapp"
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.environ['PROJECT_HOME'])
-sys.path.append(os.path.join(os.environ['PROJECT_HOME'],'fotoapp/fotoapp'))
-os.environ['DJANGO_SETTINGS_MODULE'] = os.path.join(os.environ['PROJECT_HOME'],'fotoapp/fotoapp','settings.py')
+sys.path.append(os.path.join(os.environ['PROJECT_HOME'],'fotoapp'))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'fotoapp.settings'
 virtenv = os.environ['WORKON_HOME'] + '/development/'
 
 
