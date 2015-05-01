@@ -19,11 +19,13 @@ import sys
 
 PROJECT_NAME = "fotoapp.fotoapp"
 
-os.environ['DJANGO_SETTINGS_MODULE'] = PROJECT_NAME + '.settings'
+
 #sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', PROJECT_NAME))
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.environ['PROJECT_HOME'])
+sys.path.append(os.path.join(os.environ['PROJECT_HOME'],'fotoapp/fotoapp'))
+os.environ['DJANGO_SETTINGS_MODULE'] = os.path.join(os.environ['PROJECT_HOME'],'fotoapp/fotoapp','settings.py')
 virtenv = os.environ['WORKON_HOME'] + '/development/'
 
 
